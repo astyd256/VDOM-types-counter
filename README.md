@@ -15,7 +15,7 @@ The main script is `count_types.sh` and expects two arguments:
 
 **Usage**:
 
-`./count_types.sh <path_to_types_directory> <path_to_compiled_apps_directory>`
+`./count_types.sh <path_to_VDOMserver_types_directory> <path_to_app\.tmp\pack>`
 
 The script first checks if the correct number of arguments are provided. It then delegates tasks to other scripts, namely `process_types.sh`, `pattern_search.sh`, and `types_report.py`.
 

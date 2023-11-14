@@ -10,5 +10,5 @@ TYPES_DIRECTORY="$1"
 APPS_DIRECTORY="$2"
 
 bash ./process_types.sh "$1" > "types.txt"
-bash ./pattenr_search.sh "$2" '<Object Type="\K[a-f0-9\-]+' > "used_types.txt"
+bash ./pattern_search.sh "$2" '<Object Type="\K[a-f0-9\-]+' > "used_types.txt"
 python types_report.py
