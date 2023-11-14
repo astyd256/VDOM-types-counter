@@ -14,9 +14,12 @@ with open("used_types.txt", "r") as f:
 # Dividing by blocks
 apps_data = []
 app_block = []
+app_name = None
 for line in lines:
     line = line.strip()
-    if line == "-------------------------":
+    if app_name == None:
+        app_name = line
+    elif line == "-------------------------":
         apps_data.append(app_block)
         app_block = []
     else:
@@ -31,13 +34,11 @@ ws = wb.active
 # Filing table with data
 col = 1
 for app_block in apps_data:
-    app_name = app_block[0]
-    ws.cell(row=1, column=col, value=app_name)
-    for idx, guid in enumerate(app_block[1:], start=2):
+    for idx, guid in enumerate(app_block[1:], start=1):
         type_name = types_dict.get(guid, "Unknown")
         ws.cell(row=idx, column=col, value=type_name)
     col += 2  # Skip one column
 
 # Saving report
-wb.save("report.xlsx")
+wb.save(app_name + "_report.xlsx")
 
